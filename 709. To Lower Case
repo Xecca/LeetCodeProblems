@@ -1,0 +1,16 @@
+char * toLowerCase(char * str){
+    int i;
+    char down;
+    
+    i = 0;
+        while (str[i])
+    {
+        down = str[i] + 32; 
+        if (str[i] >= 'A' && str[i] <= 'Z')
+            str[i] = down;
+        else if (str[i] >= 'a' && str[i] <= 'z')
+            str[i];
+        i++;
+    }
+    return (str);
+}
