@@ -1,44 +1,50 @@
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
-int* shortestToChar(char * S, char C, int *returnSize){
-    
+int* shortestToChar(char * S, char C, int* returnSize){
     if (S == NULL || returnSize == NULL)
         return NULL;
-    int i_p;
-    int i_m;
-    int j;
-    int count_p;
-    int count_m;
+     int ip;
+     int im;
+     int j;
+     int countp;
+     int countm;
     size_t sz = strlen(S);
     int* a = malloc(sz * sizeof(int));
-    
-    
+        
     j = 0;
     while (S[j])
     {
-        count_p = 0;
-        count_m = 0;
-        i_p = j;
-        i_m = j;
-        while (S[i_p] != C) 
+        countp = 0;
+        countm = 0;
+        ip = j;
+        im = j;
+        while (S[ip] != C && S[ip] != '\0') 
         {
-            count_p++;
-            i_p++;
+            countp++;
+            ip++;
         }
-        while (S[i_m] != C)
+        while (S[im] != C && im > 0)
         {
-            count_m--;
-            i_m--;
+            countm++;
+            im--;
         }
-        if (count_p < count_m)
-            a[j] = count_p;
-        else if (count_p > count_m)
-            a[j] = count_m;
-        else if (count_p == count_m)
-            a[j] = count_p;
+        if (S[im] == C)
+            countm = countm;
+        else if (S[im] != C)
+            countm = countp;
+        if (countp > countm && S[im] != C)
+            a[j] = countp;
+        else if (countp > countm && S[im] == C)
+            a[j] = countm;
+        else if (countp < countm && S[ip] != C)
+            a[j] = countm;
+        else if (countp < countm && S[ip] == C)
+            a[j] = countp;
+        else if (countp == countm)
+            a[j] = countp;
         j++;
     }
-   
-    return (a);  
+    *returnSize = sz;
+    return a;  
 }
