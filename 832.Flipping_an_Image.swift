@@ -22,8 +22,7 @@ func flipAndInvertImage(_ A: [[Int]]) -> [[Int]] {
         j = 0
         jEnd = sizeCell - 1
         while j < sizeCell {
-            newArr[i][jEnd] = A[i][j]
-            if newArr[i][jEnd] == 1 {
+            if A[i][j] == 1 {
                 newArr[i][jEnd] = 0
             } else {
                 newArr[i][jEnd] = 1
