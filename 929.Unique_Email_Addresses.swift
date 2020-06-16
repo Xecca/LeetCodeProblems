@@ -32,7 +32,6 @@ func numUniqueEmails(_ emails: [String]) -> Int {
             } else {
                 j += 1
             }
-            print(newEmails[i][String.Index(encodedOffset: j)])
             if newEmails[i][String.Index(encodedOffset: j)] == "+" {
                 while newEmails[i][String.Index(encodedOffset: j)] != "@" {
                     newEmails[i].remove(at: String.Index(encodedOffset: j))
@@ -43,9 +42,6 @@ func numUniqueEmails(_ emails: [String]) -> Int {
         j = 0
         i += 1
     }
-    
-    
-    print(newEmails)
     
     return (Set(newEmails)).count
 }
