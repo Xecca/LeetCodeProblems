@@ -2,8 +2,8 @@
 //Сomplexity: Easy
 //https://leetcode.com/problems/island-perimeter/
 //----------------------------------------------------
-//Runtime: 36 ms, faster than 92.54% of Swift online submissions for Find Lucky Integer in an Array.
-//Memory Usage: 21.6 MB, less than 38.30% of Swift online submissions for Find Lucky Integer in an Array.
+//Runtime: 440 ms, faster than 90.10% of Swift online submissions for Island Perimeter.
+//Memory Usage: 20.9 MB, less than 89.29% of Swift online submissions for Island Perimeter.
 //----------------------------------------------------
 
 //You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water.
