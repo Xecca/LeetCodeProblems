@@ -12,39 +12,53 @@
 
 //----------------------------------------------------
 
+//second version:
 func average(_ salary: [Int]) -> Double {
-    var newSalary = salary
-    
-    removeMedian(&newSalary, newSalary.min()!)
-    removeMedian(&newSalary, newSalary.max()!)
-    
-    let count = newSalary.count
-    
-    return Double(findSum(newSalary)) / Double(count)
-}
-
-func removeMedian(_ newSalary: inout [Int], _ val: Int) {
-    var i = 0
-    let length = newSalary.count
-    
-    while i < length {
-        if newSalary[i] == val {
-            newSalary.remove(at: i)
-            break
-        }
-        i += 1
-    }
-}
-
-func findSum(_ arr: [Int]) -> Int {
+    let minAndMax = salary.min()! + salary.max()!
     var sum = 0
-    
-    for num in arr {
+
+    for num in salary {
         sum += num
     }
     
-    return sum
+    return Double(sum - minAndMax) / Double(salary.count - 2)
 }
+
+
+//first version:
+//func average(_ salary: [Int]) -> Double {
+//    var newSalary = salary
+//
+//    removeMedian(&newSalary, newSalary.min()!)
+//    removeMedian(&newSalary, newSalary.max()!)
+//
+//    let count = newSalary.count
+//
+//    return Double(findSum(newSalary)) / Double(count)
+//}
+//
+//func removeMedian(_ newSalary: inout [Int], _ val: Int) {
+//    var i = 0
+//    let length = newSalary.count
+//
+//    while i < length {
+//        if newSalary[i] == val {
+//            newSalary.remove(at: i)
+//            break
+//        }
+//        i += 1
+//    }
+//}
+//
+//func findSum(_ arr: [Int]) -> Int {
+//    var sum = 0
+//
+//    for num in arr {
+//        sum += num
+//    }
+//
+//    return sum
+//}
 
 
 //Input:
