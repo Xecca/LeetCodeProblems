@@ -1,6 +1,6 @@
 //884. Uncommon Words from Two Sentences
 //Сomplexity: Easy
-//https://leetcode.com/problems/goat-latin/
+//https://leetcode.com/problems/uncommon-words-from-two-sentences/
 //----------------------------------------------------
 //Runtime: 4 ms, faster than 100.00% of Swift online submissions for Uncommon Words from Two Sentences.
 //Memory Usage: 21.1 MB, less than 88.46% of Swift online submissions for Uncommon Words from Two Sentences.
