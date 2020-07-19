@@ -1,6 +1,6 @@
 //412. Fizz Buzz
 //Сomplexity: Easy
-//https://leetcode.com/problems/last-stone-weight/
+//https://leetcode.com/problems/fizz-buzz/
 
 //----------------------------------------------------
 //Runtime: 20 ms, faster than 98.70% of Swift online submissions for Fizz Buzz.
