@@ -5,8 +5,8 @@
 //https://leetcode.com/problems/greatest-common-divisor-of-strings/
 
 //----------------------------------------------------
-//Runtime: 104 ms, faster than 95.00% of Swift online submissions for Lemonade Change.
-//Memory Usage: 14.2 MB, less than 100.00% of Swift online submissions for Lemonade Change.
+//Runtime: 92 ms, faster than 100.00% of Swift online submissions for Lemonade Change.
+//Memory Usage: 14.3 MB, less than 100.00% of Swift online submissions for Lemonade Change.
 //----------------------------------------------------
 
 //At a lemonade stand, each lemonade costs $5.
@@ -21,27 +21,27 @@
 
 //----------------------------------------------------
 
+//vesion 2.0
 func lemonadeChange(_ bills: [Int]) -> Bool {
-    var change = [5 : 0, 10 : 0, 20 : 0]
+    var five = 0
+    var ten = 0
 
     for bill in bills {
         if bill == 5 {
-            change.updateValue((countBillInChange(5, change) + 1), forKey: bill)
+            five += 1
         } else if bill == 10 {
-            if change[5] == 0 {
+            if five == 0 {
                 return false
             } else {
-                change.updateValue((countBillInChange(5, change) - 1), forKey: 5)
-                change.updateValue((countBillInChange(bill, change) + 1), forKey: bill)
+                five -= 1
+                ten += 1
             }
         } else if bill == 20 {
-            if (change[10]! >= 1 && change[5]! >= 1) {
-                change.updateValue((countBillInChange(bill, change) + 1), forKey: bill)
-                change.updateValue((countBillInChange(5, change) - 1), forKey: 5)
-                change.updateValue((countBillInChange(10, change) - 1), forKey: 10)
-            } else if change[5]! >= 3 {
-                change.updateValue((countBillInChange(bill, change) + 1), forKey: bill)
-                change.updateValue((countBillInChange(5, change) - 3), forKey: 5)
+            if (ten >= 1 && five >= 1) {
+                five -= 1
+                ten -= 1
+            } else if five >= 3 {
+                five -= 3
             } else {
                 return false
             }
@@ -51,11 +51,41 @@ func lemonadeChange(_ bills: [Int]) -> Bool {
     return true
 }
 
-func countBillInChange(_ bill: Int, _ change: [Int : Int]) -> Int {
-    let currentFiveBillCount = change[bill]!
-
-    return currentFiveBillCount
-}
+//func lemonadeChange(_ bills: [Int]) -> Bool {
+//    var change = [5 : 0, 10 : 0, 20 : 0]
+//
+//    for bill in bills {
+//        if bill == 5 {
+//            change.updateValue((countBillInChange(5, change) + 1), forKey: bill)
+//        } else if bill == 10 {
+//            if change[5] == 0 {
+//                return false
+//            } else {
+//                change.updateValue((countBillInChange(5, change) - 1), forKey: 5)
+//                change.updateValue((countBillInChange(bill, change) + 1), forKey: bill)
+//            }
+//        } else if bill == 20 {
+//            if (change[10]! >= 1 && change[5]! >= 1) {
+//                change.updateValue((countBillInChange(bill, change) + 1), forKey: bill)
+//                change.updateValue((countBillInChange(5, change) - 1), forKey: 5)
+//                change.updateValue((countBillInChange(10, change) - 1), forKey: 10)
+//            } else if change[5]! >= 3 {
+//                change.updateValue((countBillInChange(bill, change) + 1), forKey: bill)
+//                change.updateValue((countBillInChange(5, change) - 3), forKey: 5)
+//            } else {
+//                return false
+//            }
+//        }
+//    }
+//
+//    return true
+//}
+//
+//func countBillInChange(_ bill: Int, _ change: [Int : Int]) -> Int {
+//    let currentFiveBillCount = change[bill]!
+//
+//    return currentFiveBillCount
+//}
 
 //Example: 1
 //Input:
