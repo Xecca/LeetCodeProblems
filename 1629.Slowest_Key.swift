@@ -32,13 +32,11 @@
 
 func slowestKey(_ releaseTimes: [Int], _ keysPressed: String) -> Character {
     var i = 0
-    var duration = 0
     var maxDuration = 0
     var maxDurationIndex = 0
     
     if releaseTimes.count >= 1 {
-        duration = releaseTimes[0]
-        maxDuration = duration
+        maxDuration = releaseTimes[0]
         maxDurationIndex = 0
         i += 1
     }
