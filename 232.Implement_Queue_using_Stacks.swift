@@ -1,0 +1,84 @@
+// Solved by Xecca
+
+//232. Implement Queue using Stacks
+//Difficult: Easy
+//https://leetcode.com/problems/implement-queue-using-stacks/
+
+//Runtime: 0 ms, faster than 100.00% of Swift online submissions for Implement Queue using Stacks.
+//Memory Usage: 14.2 MB, less than 80.36% of Swift online submissions for Implement Queue using Stacks.
+
+//
+//Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
+//
+//Implement the MyQueue class:
+//
+//void push(int x) Pushes element x to the back of the queue.
+//int pop() Removes the element from the front of the queue and returns it.
+//int peek() Returns the element at the front of the queue.
+//boolean empty() Returns true if the queue is empty, false otherwise.
+//Notes:
+//
+//You must use only standard operations of a stack, which means only push to top, peek/pop from top, size, and is empty operations are valid.
+//Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.
+//Follow-up: Can you implement the queue such that each operation is amortized O(1) time complexity? In other words, performing n operations will take overall O(n) time even if one of those operations may take longer.
+//Constraints:
+//
+//1 <= x <= 9
+//At most 100 calls will be made to push, pop, peek, and empty.
+//All the calls to pop and peek are valid.
+//
+
+class MyQueue {
+    var arr: [Int]
+    /** Initialize your data structure here. */
+    init() {
+        arr = []
+    }
+    
+    /** Push element x to the back of queue. */
+    func push(_ x: Int) {
+        arr.append(x)
+    }
+    
+    /** Removes the element from in front of queue and returns that element. */
+    func pop() -> Int {
+        if arr.count > 0 {
+            let popBack = arr[0]
+            arr.remove(at: 0)
+            
+            return popBack
+        }
+        return -1
+    }
+    
+    /** Get the front element. */
+    func peek() -> Int {
+        return arr[0]
+    }
+    
+    /** Returns whether the queue is empty. */
+    func empty() -> Bool {
+        arr.count == 0 ? true : false
+    }
+}
+
+
+//Example 1:
+//Input
+//["MyQueue", "push", "push", "peek", "pop", "empty"]
+//[[], [1], [2], [], [], []]
+//Output
+//[null, null, null, 1, 1, false]
+
+//Explanation
+let myQueue = MyQueue();
+myQueue.push(1); // queue is: [1]
+myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
+myQueue.peek(); // return 1
+myQueue.pop(); // return 1, queue is [2]
+myQueue.empty(); // return false
+
+//Test cases:
+
+//if gcdOfStrings("ABCABC", "ABC") == "ABC" { print("Correct!") } else { print("Error! Expected: \("ABC")") }
+
