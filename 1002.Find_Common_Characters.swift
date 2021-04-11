@@ -1,80 +1,74 @@
-//1002. Find Common Characters
-//Сomplexity: Easy
-//https://leetcode.com/problems/find-common-characters/
-//----------------------------------------------------
-//Runtime: 1696 ms, faster than 5.13% of Swift online submissions for Find Common Characters.
-//Memory Usage: 20.8 MB, less than 89.47% of Swift online submissions for Find Common Characters.
-//----------------------------------------------------
-//Given an array A of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates).  For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.
-//
-//You may return the answer in any order.
-//----------------------------------------------------
+// Solved by Xecca
 
-// more faster alternative variant:
-//func commonChars(_ A: [String]) -> [String] {
-//    var chars = [Int](repeating: Int.max, count: 26)
-//    var ret = [String]()
-//    for word in A {
-//        var _chars = [Int](repeating: 0, count: 26)
-//        for c in word {
-//            _chars[Int(c.asciiValue!) - 97] += 1
-//        }
-//        for i in 0..<26 {
-//            chars[i] = min(chars[i], _chars[i])
-//            print(chars[i])
-//            print(chars)
-//            print(_chars)
-//        }
-//    }
+//1002. Find Common Characters
+//Difficult: Easy
+//https://leetcode.com/problems/find-common-characters/
+
+//Runtime: 52 ms, faster than 87.21% of Swift online submissions for Find Common Characters.
+//Memory Usage: 14.1 MB, less than 98.84% of Swift online submissions for Find Common Characters.
+
 //
-//    for i in 0..<26 {
-//        for _ in 0..<chars[i] {
-//            ret.append(String(Character(Unicode.Scalar(i + 97)!)))
-//        }
-//    }
+    //Given an array A of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates).  For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.
+    //
+    //You may return the answer in any order.
+
+    //Note:
+    //
+    //1 <= A.length <= 100
+    //1 <= A[i].length <= 100
+    //A[i][j] is a lowercase letter
 //
-//    return ret
-//}
 
 func commonChars(_ A: [String]) -> [String] {
-    var i = 1
-    var newArrStr = A
-    var countChars = 0
-    var j = 0
-    var finalStr = [String]()
-
-
-    while newArrStr[0].count > 0 {
-        countChars = 1
-        i = 1
-        j = 0
-        let currentChar = newArrStr[0][String.Index(utf16Offset: 0, in: newArrStr[0])]
-
-        while i < newArrStr.count {
-            while j < newArrStr[i].count {
-                if currentChar == newArrStr[i][String.Index(utf16Offset: j, in: newArrStr[i])] {
-                    countChars += 1
-                    newArrStr[i].remove(at: String.Index(utf16Offset: j, in: newArrStr[i]))
-                    break
-                }
-                j += 1
+    
+    var comChars = [String]()
+    var countLetters = 0
+    var lettersInFirstWord: [Character : Int] = [:]
+    var i = 0
+    
+    for letter in A[i] {
+        let countLetters = lettersInFirstWord[letter] ?? 0
+        lettersInFirstWord.updateValue(countLetters + 1, forKey: letter)
+    }
+    i += 1
+    
+    while i < A.count {
+        var lettersInCurrentWord: [Character : Int] = [:]
+        for letter in A[i] {
+            countLetters = lettersInCurrentWord[letter] ?? 0
+            lettersInCurrentWord.updateValue(countLetters + 1, forKey: letter)
+        }
+        
+        for letter in lettersInFirstWord.keys {
+            if lettersInFirstWord[letter] ?? 0 > lettersInCurrentWord[letter] ?? 0 {
+                lettersInFirstWord.updateValue(lettersInCurrentWord[letter] ?? 0, forKey: letter)
             }
-            print(newArrStr)
-            j = 0
+        }
+        i += 1
+    }
+    
+    for letter in lettersInFirstWord.keys {
+        i = 0
+        while i < lettersInFirstWord[letter] ?? 0 {
+            comChars.append(String(letter))
             i += 1
         }
-        if countChars == newArrStr.count {
-            finalStr.append(String(currentChar))
-        }
-        newArrStr[0].remove(at: String.Index(utf16Offset: 0, in: newArrStr[0]))
     }
-
-    return finalStr
+    
+    return comChars
 }
 
-//Input:
-let str = ["bella","label","roller"]
+//Example 1:
+//
+//Input: ["bella","label","roller"]
 //Output: ["e","l","l"]
+//Example 2:
+//
+//Input: ["cool","lock","cook"]
+//Output: ["c","o"]
 
-commonChars(str)
+//Test cases:
+
+if commonChars(["bella","label","roller"]) == ["e","l","l"] { print("Correct!") } else { print("Error! Expected: \(["e","l","l"])") }
+if commonChars(["cool","lock","cook"]) == ["e","l","l"] { print("Correct!") } else { print("Error! Expected: \(["c","o"])") }
 
