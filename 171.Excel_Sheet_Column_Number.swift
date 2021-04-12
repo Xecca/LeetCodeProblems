@@ -28,6 +28,17 @@
     //columnTitle is in the range ["A", "FXSHRXW"].
 //
 
+// Best solution (not mine):
+//func titleToNumber(_ columnTitle: String) -> Int {
+ //   var result = 0
+ //   for char in columnTitle {
+ //     let num = Int(char.unicodeScalars.first!.value - 64)
+ //     result = result * 26 + num
+ //   }
+ //   return result
+ // }
+
+
 func titleToNumber(_ columnTitle: String) -> Int {
     
     var numbers: [Int] = []
