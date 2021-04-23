@@ -4,8 +4,8 @@
 //Difficult: Easy
 //https://leetcode.com/problems/maximum-score-after-splitting-a-string/
 
-//Runtime: 20 ms, faster than 10.53% of Swift online submissions for Path Crossing.
-//Memory Usage: 14.9 MB, less than 15.79% of Swift online submissions for Path Crossing.
+//Runtime: 16 ms, faster than 11.11% of Swift online submissions for Maximum Score After Splitting a String.
+//Memory Usage: 13.9 MB, less than 100.00% of Swift online submissions for Maximum Score After Splitting a String..
 
 //
 
