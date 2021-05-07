@@ -22,19 +22,17 @@
 //
 
 func findContentChildren(_ g: [Int], _ s: [Int]) -> Int {
-    var greedKids: [Int] = g
-    var cookies: [Int] = s
+    let greedKids: [Int] = g.sorted()
+    let cookies: [Int] = s.sorted()
     var i = 0
     var j = 0
     let kidsCount = greedKids.count
     let cookiesCount = cookies.count
     var maxMatched = 0
-    
+
     while i < kidsCount {
         while j < cookiesCount {
             if greedKids[i] <= cookies[j] {
-                greedKids[i] = 0
-                cookies[j] = 0
                 maxMatched += 1
                 j += 1
                 break
@@ -43,7 +41,7 @@ func findContentChildren(_ g: [Int], _ s: [Int]) -> Int {
         }
         i += 1
     }
-    
+
     return maxMatched
 }
 
@@ -66,4 +64,3 @@ func findContentChildren(_ g: [Int], _ s: [Int]) -> Int {
 
 if findContentChildren([1,2,3], [1,1]) == 1 { print("Correct!") } else { print("Error! Expected: \(1)") }
 if findContentChildren([1,2], [1,2,3]) == 2 { print("Correct!") } else { print("Error! Expected: \(2)") }
-
