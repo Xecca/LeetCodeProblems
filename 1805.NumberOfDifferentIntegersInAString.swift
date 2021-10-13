@@ -4,7 +4,7 @@
 //Difficult: Easy
 //https://leetcode.com/problems/number-of-different-integers-in-a-string/
 
-//Runtime: 5 ms, faster than 80.00% of Swift online submissions for Number of Different Integers in a String.
+//Runtime: 4 ms, faster than 100.00% of Swift online submissions for Number of Different Integers in a String.
 //Memory Usage: 14.2 MB, less than 100.00% of Swift online submissions for Number of Different Integers in a String.
 
 //
