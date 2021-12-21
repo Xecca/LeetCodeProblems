@@ -5,15 +5,11 @@
 //----------------------------------------------------
 
 func isPowerOfTwo(_ n: Int) -> Bool {
-    var newNum: Double = Double(n)
+    if n <= 0 {
+        return false
+    }
 
-    while newNum > 1.0 {
-        newNum /= 2.0
-    }
-    if (newNum == 1.0) {
-        return true
-    }
-    return false
+    return (n & (n - 1)) == 0
 }
 
 //Input:
