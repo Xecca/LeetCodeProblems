@@ -50,6 +50,33 @@ func validMountainArray(_ arr: [Int]) -> Bool {
     return false
 }
 
+// Version 2:
+
+//    func validMountainArray(_ arr: [Int]) -> Bool {
+//        let peak = arr.max() ?? 0
+//        let splitedArr = arr.split(separator: peak)
+//        let length = arr.count
+//
+//        if splitedArr.count == 2 {
+//            if splitedArr[0].count + splitedArr[1].count + 1 == length {
+//                let leftPart = [Int](splitedArr[0])
+//                let rightPart = [Int](splitedArr[1])
+//
+//                if Set(leftPart).count != leftPart.count || Set(rightPart).count != rightPart.count {
+//                    return false
+//                }
+//                let sortedLeftPart = leftPart.sorted(by: <)
+//                let sortedRightPart = rightPart.sorted(by: >)
+//
+//                if leftPart == sortedLeftPart && rightPart == sortedRightPart {
+//                    return true
+//                }
+//            }
+//        }
+//
+//        return false
+//    }
+
 //Example 1:
 //
 //Input: arr = [2,1]
