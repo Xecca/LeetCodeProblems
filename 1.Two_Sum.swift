@@ -25,21 +25,18 @@
 //
 
 func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-    var i = nums.count - 1
-    var j = 0
+    var dict: [Int: Int] = [:]
 
-    while i > 0 {
-        while j < i {
-            if nums[i] + nums[j] == target {
-                return [j, i]
-            }
-            j += 1
+    for (i, num) in nums.enumerated() {
+        let potential = target - num
+
+        if dict[potential] != nil {
+            return [dict[potential]!, i]
         }
-        i -= 1
-        j = 0
+        dict[num] = i
     }
-    
-    return [0]
+
+    return []
 }
 
 //Example 1:
