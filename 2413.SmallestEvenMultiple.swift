@@ -55,3 +55,4 @@ let answer = 10
 if smallestEvenMultiple(input) == answer { print("Correct!") } else { print("Error! Expexted: \(answer)") }
 
 
+
